@@ -1,0 +1,71 @@
+
+
+
+ ███████╗ ██╗  ██╗ ██╗ ██╗      ██╗      ██╗   ██╗ ██╗
+ ██╔════╝ ██║ ██╔╝ ██║ ██║      ██║      ██║   ██║ ██║
+ ███████╗ █████╔╝  ██║ ██║      ██║      ██║   ██║ ██║
+ ╚════██║ ██╔═██╗  ██║ ██║      ██║      ██║   ██║ ██║
+ ███████║ ██║  ██╗ ██║ ███████╗ ███████╗ ╚██████╔╝ ██║
+ ╚══════╝ ╚═╝  ╚═╝ ╚═╝ ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝
+
+
+[0m[?25h[K   Reverse-engineer any design system — No AI. No API keys. No cloud.
+
+   01 ❆ Website crawling    Live URL + full CSS + DOM analysis
+   02 ❆ Local dir scanning  CSS/SCSS/TSX/JSX token extraction
+   03 ❆ Git repo cloning    Clone + scan + package automatically
+   04 ❆ Ultra mode          7 scroll frames, keyframes, interactions
+   05 ❆ .skill packaging    One ZIP, drop into Claude Code
+   06 ❆ Zero API keys       Pure static analysis, no cloud
+
+   ──────────────────────────────────────────────────────────────────────
+
+
+╭  skillui v1.3.4  ────────────────────────────────────────────────────────╮
+│Mode     ultra                                                            │
+│Target   https://constancesouville.com                                    │
+│Output                                                                    │
+│C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references      │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+- Fetching HTML + CSS...
+✓ CSS + token extraction  7 colors · 23 fonts (Playwright not found)
+  ⚠  Playwright not installed — computed style extraction skipped
+  ⚠  Fix: npm install -g playwright && npx playwright install chromium
+
+╭  Missing dependency  ────────────────────────────────────────────────────╮
+│  Ultra mode requires Playwright.                                         │
+│                                                                          │
+│  Run: npm install -g playwright && npx playwright install chromium       │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+  ⚠  Continuing without ultra features...
+- Writing DESIGN.md...
+✓ DESIGN.md  C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references\constancesouville-design\DESIGN.md
+- Bundling .skill package...
+✓ .skill package  C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references\constancesouville-design\constancesouville-design.skill
+
+╔  Extraction Complete  ═══════════════════════════════════════════════════╗
+║  Colors                7 extracted                                       ║
+║  Fonts                 2 families                                        ║
+║  Grid                  8px baseline                                      ║
+║  Components            4 patterns                                        ║
+║  Animations            3 detected                                        ║
+║  Framework             none detected                                     ║
+║  Dark mode             not detected                                      ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+╭  Output files  ──────────────────────────────────────────────────────────╮
+│DESIGN.md         ./constancesouville-design/DESIGN.md                    │
+│constancesouville.skill./constancesouville-design/constancesouville-desig │
+│n.skill                                                                   │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+╭  Next steps  ────────────────────────────────────────────────────────────╮
+│  Open Claude Code inside the design folder:                              │
+│    cd constancesouville-design && claude                                 │
+│                                                                          │
+│  Claude will auto-read CLAUDE.md and SKILL.md. Then ask:                 │
+│    "Build me a UI that matches this design system"                       │
+╰──────────────────────────────────────────────────────────────────────────╯
+

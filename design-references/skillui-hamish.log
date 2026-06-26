@@ -1,0 +1,70 @@
+
+
+
+ ███████╗ ██╗  ██╗ ██╗ ██╗      ██╗      ██╗   ██╗ ██╗
+ ██╔════╝ ██║ ██╔╝ ██║ ██║      ██║      ██║   ██║ ██║
+ ███████╗ █████╔╝  ██║ ██║      ██║      ██║   ██║ ██║
+ ╚════██║ ██╔═██╗  ██║ ██║      ██║      ██║   ██║ ██║
+ ███████║ ██║  ██╗ ██║ ███████╗ ███████╗ ╚██████╔╝ ██║
+ ╚══════╝ ╚═╝  ╚═╝ ╚═╝ ╚══════╝ ╚══════╝  ╚═════╝  ╚═╝
+
+
+[0m[?25h[K   Reverse-engineer any design system — No AI. No API keys. No cloud.
+
+   01 ❆ Website crawling    Live URL + full CSS + DOM analysis
+   02 ❆ Local dir scanning  CSS/SCSS/TSX/JSX token extraction
+   03 ❆ Git repo cloning    Clone + scan + package automatically
+   04 ❆ Ultra mode          7 scroll frames, keyframes, interactions
+   05 ❆ .skill packaging    One ZIP, drop into Claude Code
+   06 ❆ Zero API keys       Pure static analysis, no cloud
+
+   ──────────────────────────────────────────────────────────────────────
+
+
+╭  skillui v1.3.4  ────────────────────────────────────────────────────────╮
+│Mode     ultra                                                            │
+│Target   https://hamishw.com                                              │
+│Output                                                                    │
+│C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references      │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+- Fetching HTML + CSS...
+✓ CSS + token extraction  3 colors · 84 fonts (Playwright not found)
+  ⚠  Playwright not installed — computed style extraction skipped
+  ⚠  Fix: npm install -g playwright && npx playwright install chromium
+
+╭  Missing dependency  ────────────────────────────────────────────────────╮
+│  Ultra mode requires Playwright.                                         │
+│                                                                          │
+│  Run: npm install -g playwright && npx playwright install chromium       │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+  ⚠  Continuing without ultra features...
+- Writing DESIGN.md...
+✓ DESIGN.md  C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references\hamishw-design\DESIGN.md
+- Bundling .skill package...
+✓ .skill package  C:\Users\itsha\OneDrive\Documents\GitHub\Portfolio\design-references\hamishw-design\hamishw-design.skill
+
+╔  Extraction Complete  ═══════════════════════════════════════════════════╗
+║  Colors                3 extracted                                       ║
+║  Fonts                 2 families                                        ║
+║  Grid                  10px baseline                                     ║
+║  Components            7 patterns                                        ║
+║  Animations            11 detected                                       ║
+║  Framework             none detected                                     ║
+║  Dark mode             not detected                                      ║
+╚══════════════════════════════════════════════════════════════════════════╝
+
+╭  Output files  ──────────────────────────────────────────────────────────╮
+│  DESIGN.md         ./hamishw-design/DESIGN.md                            │
+│  hamishw.skill     ./hamishw-design/hamishw-design.skill                 │
+╰──────────────────────────────────────────────────────────────────────────╯
+
+╭  Next steps  ────────────────────────────────────────────────────────────╮
+│  Open Claude Code inside the design folder:                              │
+│    cd hamishw-design && claude                                           │
+│                                                                          │
+│  Claude will auto-read CLAUDE.md and SKILL.md. Then ask:                 │
+│    "Build me a UI that matches this design system"                       │
+╰──────────────────────────────────────────────────────────────────────────╯
+
