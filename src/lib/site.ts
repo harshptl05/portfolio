@@ -103,6 +103,8 @@ export type Project = {
   index: string;
   name: string;
   award?: string;
+  tagline?: string;
+  role?: string;
   problem?: string;
   build: string;
   result?: string;
@@ -116,6 +118,8 @@ export const projects: Project[] = [
     index: "01",
     name: "RideIQ",
     award: "🥇 1st Place, Toyota Challenge @ TAMUHack (Jan 2026)",
+    tagline: "AI car marketplace with semantic search across 43k vehicles.",
+    role: "Front-end lead · 24-hour hackathon",
     problem:
       "Car shoppers face tens of thousands of listings with no way to describe what they actually want in plain language.",
     build:
@@ -140,6 +144,9 @@ export const projects: Project[] = [
     index: "02",
     name: "DOME",
     award: "Senior Capstone · Glenart Group",
+    tagline:
+      "13-agent Claude pipeline that extracts structured data from electrical diagrams.",
+    role: "Reporting Lead · owned Agent 5 (Redundancy) and Agent 10 (Output Formatting)",
     problem:
       "Extracting equipment data from single-line electrical diagrams was a slow, manual, expensive task ($200K–$500K and 6–12 months per facility).",
     build:
@@ -160,6 +167,9 @@ export const projects: Project[] = [
     index: "03",
     name: "FinanceIQ",
     award: "🏅 4th Place, Goldman Sachs Challenge (Apr 2026)",
+    tagline:
+      "Full-stack AI investing platform aggregating 7 live financial APIs.",
+    role: "Full-stack builder · 36-hour build",
     build:
       "Full-stack AI investing platform aggregating live data from 7 financial APIs (yfinance, Polygon, FRED, NewsAPI, Claude) for personalized, AI-generated insights. Multi-agent Python/FastAPI backend on Railway with scheduled connectors and rate-limit handling; a Claude Sonnet advisor using SSE streaming + 6 tool calls; a responsive React/Next.js dashboard with real-time Recharts visualizations.",
     stack: [
@@ -182,6 +192,9 @@ export const projects: Project[] = [
     index: "04",
     name: "Your.ai",
     award: "🥈 2nd Place, ACM Projects",
+    tagline:
+      "LLM scheduling assistant that manages calendars through natural language.",
+    role: "Full-stack builder",
     build:
       "LLM-powered scheduling assistant that manages calendars, tasks, and deadlines through natural-language commands and calendar sync. Implemented a RAG pipeline over user schedule/task data for context-aware recommendations; React/TypeScript UI with Google OAuth over a Flask/Express backend.",
     stack: [

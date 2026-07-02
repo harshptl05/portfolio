@@ -1,103 +1,67 @@
 "use client";
 
-import React, { useState, useEffect, useId } from "react";
-
-import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 export interface ContainerTextFlipProps {
-  /** Array of words to cycle through in the animation */
+  /** Array of words to cycle through */
   words?: string[];
   /** Time in milliseconds between word transitions */
   interval?: number;
-  /** Additional CSS classes to apply to the container */
+  /** Additional CSS classes for the container */
   className?: string;
-  /** Additional CSS classes to apply to the text */
+  /** Additional CSS classes for each word */
   textClassName?: string;
-  /** Duration of the transition animation in milliseconds */
-  animationDuration?: number;
 }
 
+/**
+ * Cycling word with ZERO layout reflow.
+ *
+ * Every word is rendered into the SAME CSS grid cell (col/row start 1), so
+ * the element is permanently sized to the WIDEST word — the surrounding
+ * headline text never shifts when the word changes. The active word
+ * cross-fades + rises in; the rest are hidden. No framer-motion `layout`
+ * (which was re-measuring on scroll and nudging the whole page).
+ * Respects prefers-reduced-motion via motion-reduce.
+ */
 export function ContainerTextFlip({
   words = ["better", "modern", "beautiful", "awesome"],
-  interval = 3000,
+  interval = 2600,
   className,
   textClassName,
-  animationDuration = 700,
 }: ContainerTextFlipProps) {
-  const id = useId();
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [width, setWidth] = useState(100);
-  const textRef = React.useRef(null);
-
-  const updateWidthForWord = () => {
-    if (textRef.current) {
-      // Add some padding to the text width (30px on each side)
-      // @ts-ignore
-      const textWidth = textRef.current.scrollWidth + 30;
-      setWidth(textWidth);
-    }
-  };
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    // Update width whenever the word changes
-    updateWidthForWord();
-  }, [currentWordIndex]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-      // Width will be updated in the effect that depends on currentWordIndex
-    }, interval);
-
-    return () => clearInterval(intervalId);
+    const id = setInterval(
+      () => setIndex((i) => (i + 1) % words.length),
+      interval,
+    );
+    return () => clearInterval(id);
   }, [words, interval]);
 
   return (
-    // Inline <span> wrappers — valid inside an <h1> (no <p>/<div> nesting).
-    <motion.span
-      layout
-      layoutId={`words-here-${id}`}
-      animate={{ width }}
-      transition={{ duration: animationDuration / 2000 }}
+    <span
       className={cn(
-        // Editorial restyle: transparent, inline with the headline, accent-colored.
-        "relative inline-block text-center font-semibold text-primary",
+        "relative inline-grid align-bottom font-semibold text-primary",
         className,
       )}
-      key={words[currentWordIndex]}
     >
-      <motion.span
-        transition={{
-          duration: animationDuration / 1000,
-          ease: "easeInOut",
-        }}
-        className={cn("inline-block", textClassName)}
-        ref={textRef}
-        layoutId={`word-div-${words[currentWordIndex]}-${id}`}
-      >
-        <motion.span className="inline-block">
-          {words[currentWordIndex].split("").map((letter, index) => (
-            <motion.span
-              key={index}
-              className="inline-block"
-              initial={{
-                opacity: 0,
-                filter: "blur(10px)",
-              }}
-              animate={{
-                opacity: 1,
-                filter: "blur(0px)",
-              }}
-              transition={{
-                delay: index * 0.02,
-              }}
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </motion.span>
-      </motion.span>
-    </motion.span>
+      {words.map((word, i) => (
+        <span
+          key={word}
+          aria-hidden={i !== index}
+          className={cn(
+            "col-start-1 row-start-1 whitespace-nowrap transition-all duration-500 ease-out motion-reduce:transition-none motion-reduce:blur-0",
+            i === index
+              ? "translate-y-0 opacity-100 blur-0"
+              : "pointer-events-none translate-y-[0.3em] opacity-0 blur-[6px]",
+            textClassName,
+          )}
+        >
+          {word}
+        </span>
+      ))}
+    </span>
   );
 }

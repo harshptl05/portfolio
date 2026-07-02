@@ -10,7 +10,7 @@ export function Contact() {
   return (
     <footer
       id="contact"
-      className="border-t border-border/60 px-6 py-24 md:py-32"
+      className="px-6 py-24 md:py-32"
     >
       <div className="mx-auto w-full max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-primary">

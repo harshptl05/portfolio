@@ -63,6 +63,18 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Infinite marquee (tech stack bar) */
+@theme {
+  --animate-scroll: scroll var(--animation-duration, 40s)
+    var(--animation-direction, forwards) linear infinite;
+
+  @keyframes scroll {
+    to {
+      transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+}
+
 /* ---------------- LIGHT THEME (cool paper) ---------------- */
 :root {
   --background: oklch(0.985 0.002 255);  /* cool off-white */
@@ -73,8 +85,8 @@
   --popover-foreground: oklch(0.17 0.01 265);
 
   /* primary = electric blue #3B82F6 (blue-500) */
-  --primary: oklch(0.623 0.214 259.815);
-  --primary-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.715 0.143 215.221);
+  --primary-foreground: oklch(0.18 0.03 220);
 
   --secondary: oklch(0.94 0.004 255);
   --secondary-foreground: oklch(0.22 0.01 265);
@@ -84,15 +96,15 @@
   --accent-foreground: oklch(0.22 0.01 265);
 
   /* editorial accents */
-  --accent-blue: oklch(0.623 0.214 259.815);   /* #3B82F6 */
+  --accent-blue: oklch(0.715 0.143 215.221);   /* #3B82F6 */
   --accent-violet: oklch(0.585 0.233 277.117); /* #6366F1 */
 
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.88 0.005 260);
   --input: oklch(0.88 0.005 260);
-  --ring: oklch(0.623 0.214 259.815);
+  --ring: oklch(0.715 0.143 215.221);
 
-  --chart-1: oklch(0.623 0.214 259.815);  /* blue */
+  --chart-1: oklch(0.715 0.143 215.221);  /* blue */
   --chart-2: oklch(0.585 0.233 277.117);  /* violet */
   --chart-3: oklch(0.50 0.012 260);
   --chart-4: oklch(0.40 0.012 260);
@@ -101,12 +113,12 @@
 
   --sidebar: oklch(0.985 0.002 255);
   --sidebar-foreground: oklch(0.17 0.01 265);
-  --sidebar-primary: oklch(0.623 0.214 259.815);
+  --sidebar-primary: oklch(0.715 0.143 215.221);
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.94 0.008 260);
   --sidebar-accent-foreground: oklch(0.22 0.01 265);
   --sidebar-border: oklch(0.88 0.005 260);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --sidebar-ring: oklch(0.715 0.143 215.221);
 }
 
 /* ---------------- DARK THEME (default — cool near-black) ---------------- */
@@ -119,7 +131,7 @@
   --popover-foreground: oklch(0.96 0.004 255);
 
   /* primary = lighter electric blue #60A5FA (blue-400) for pop on near-black */
-  --primary: oklch(0.707 0.165 254.624);
+  --primary: oklch(0.789 0.154 211.53);
   --primary-foreground: oklch(0.16 0.01 265);
 
   --secondary: oklch(0.24 0.006 265);
@@ -130,15 +142,15 @@
   --accent-foreground: oklch(0.96 0.004 255);
 
   /* editorial accents (lighter shades read better on near-black) */
-  --accent-blue: oklch(0.707 0.165 254.624);   /* #60A5FA */
+  --accent-blue: oklch(0.789 0.154 211.53);   /* #60A5FA */
   --accent-violet: oklch(0.673 0.182 276.935); /* #818CF8 */
 
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 9%);
   --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.707 0.165 254.624);
+  --ring: oklch(0.789 0.154 211.53);
 
-  --chart-1: oklch(0.707 0.165 254.624);  /* blue */
+  --chart-1: oklch(0.789 0.154 211.53);  /* blue */
   --chart-2: oklch(0.673 0.182 276.935);  /* violet */
   --chart-3: oklch(0.55 0.01 260);
   --chart-4: oklch(0.40 0.008 262);
@@ -146,12 +158,12 @@
 
   --sidebar: oklch(0.17 0.006 265);
   --sidebar-foreground: oklch(0.96 0.004 255);
-  --sidebar-primary: oklch(0.707 0.165 254.624);
+  --sidebar-primary: oklch(0.789 0.154 211.53);
   --sidebar-primary-foreground: oklch(0.16 0.01 265);
   --sidebar-accent: oklch(0.26 0.008 265);
   --sidebar-accent-foreground: oklch(0.96 0.004 255);
   --sidebar-border: oklch(1 0 0 / 9%);
-  --sidebar-ring: oklch(0.707 0.165 254.624);
+  --sidebar-ring: oklch(0.789 0.154 211.53);
 }
 
 @layer base {
@@ -169,8 +181,19 @@
   h1, h2, h3, h4 {
     @apply font-heading tracking-tight;
   }
-  /* Respect reduced motion — heavy scroll motion gets disabled in later phases */
+  /* Respect reduced motion — a global safety net on top of the per-component
+     guards (GSAP/Lenis/framer are disabled in JS where used). */
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

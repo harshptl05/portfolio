@@ -6,6 +6,8 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { ContainerTextFlip } from "@/components/ui/container-text-flip";
+import { Cover } from "@/components/ui/cover";
+import { RevealText } from "@/components/ui/reveal-text";
 import { Socials } from "@/components/layout/socials";
 import { site } from "@/lib/site";
 
@@ -72,28 +74,42 @@ export function Hero() {
           {site.role} · {site.location}
         </p>
 
-        <h1 className="mt-8 max-w-4xl font-heading text-[clamp(2.75rem,8vw,6rem)] font-semibold leading-[0.98] tracking-tighter">
-          <span className="hero-lead inline-block">I build</span>{" "}
-          <span className="hero-flip inline-block">
-            <ContainerTextFlip
-              words={[
-                "full-stack products",
-                "AI agents",
-                "things that ship",
-                "multi-agent pipelines",
-                "what matters",
-              ]}
-              interval={2400}
-              className="text-[clamp(2.75rem,8vw,6rem)] tracking-tighter"
-            />
+        {/* Name — RevealText (springs in, hover sweep) */}
+        <div className="mt-6">
+          <RevealText
+            text="Harsh Patel"
+            textColor="text-foreground"
+            overlayColor="text-primary"
+            fontSize="text-[clamp(3rem,11vw,7.5rem)]"
+            letterDelay={0.06}
+            overlayDelay={0.04}
+            overlayDuration={0.35}
+            springDuration={500}
+          />
+        </div>
+
+        <h1 className="mt-6 max-w-3xl font-heading text-[clamp(1.6rem,4.5vw,3rem)] font-medium leading-[1.12] tracking-tight text-muted-foreground">
+          <span className="hero-lead inline">I build</span>{" "}
+          <span className="hero-flip inline-block align-bottom">
+            <Cover>
+              <ContainerTextFlip
+                words={[
+                  "full-stack products",
+                  "AI agents",
+                  "things that ship",
+                  "multi-agent pipelines",
+                  "what matters",
+                ]}
+                interval={2400}
+                className="text-[clamp(1.6rem,4.5vw,3rem)] tracking-tight"
+              />
+            </Cover>
           </span>
-          <span className="hero-flip">.</span>
         </h1>
 
         <p className="hero-sub mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">
-          {site.name} — a full-stack &amp; AI engineer turning multi-agent LLM
-          systems and React/Next.js front ends into products that reach real
-          users.
+          A full-stack &amp; AI engineer turning multi-agent LLM systems and
+          React/Next.js front ends into products that reach real users.
         </p>
 
         <div className="hero-actions mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
