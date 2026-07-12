@@ -35,7 +35,7 @@ export function RevealText({
   return (
     <span
       className={cn(
-        "group inline-flex flex-wrap font-heading font-bold leading-[1.05] tracking-tight",
+        "group inline-flex flex-wrap font-heading leading-[1.05] tracking-tight",
         fontSize,
         className,
       )}

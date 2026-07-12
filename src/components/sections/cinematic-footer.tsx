@@ -30,6 +30,7 @@ function isPlaceholder(href: string) {
 export function CinematicFooter() {
   return (
     <footer
+      id="contact"
       aria-label="Contact"
       className="fixed inset-x-0 bottom-0 z-0 flex h-[100svh] flex-col justify-between overflow-hidden border-t border-border bg-background px-6 pt-24 pb-10 text-foreground"
     >
@@ -44,11 +45,12 @@ export function CinematicFooter() {
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-primary">
           Contact
         </p>
-        <h2 className="mt-6 font-heading text-[clamp(2.5rem,9vw,8rem)] font-semibold leading-[0.92] tracking-tighter">
-          Let&apos;s build something.
+        <h2 className="mt-6 font-heading text-[clamp(2.5rem,9vw,8rem)] leading-[0.92] tracking-tighter">
+          Let&apos;s build something that ships.
         </h2>
         <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-          Open to full-time roles, internships, and interesting problems.
+          Open to internships, full-time roles, and interesting problems.
+          Usually reply within a day.
         </p>
       </div>
 
@@ -63,7 +65,7 @@ export function CinematicFooter() {
             marqueeUnit.map((text, j) => (
               <span
                 key={`${i}-${j}`}
-                className="flex shrink-0 items-center gap-8 font-heading text-3xl font-bold tracking-tight text-foreground/90 transition-colors group-hover:text-primary md:text-5xl"
+                className="flex shrink-0 items-center gap-8 font-heading text-3xl tracking-tight text-foreground/90 transition-colors group-hover:text-primary md:text-5xl"
               >
                 {text}
                 <span className="text-primary/50">·</span>
@@ -100,10 +102,26 @@ export function CinematicFooter() {
             ),
           )}
         </div>
-        <p className="mt-10 font-mono text-xs text-muted-foreground">
-          © {new Date().getFullYear()} {site.name} — Built with Next.js,
-          Tailwind, GSAP
-        </p>
+        <div className="mt-8 flex items-center justify-between border-t border-border pt-6">
+          <p className="font-mono text-[10px] text-muted-foreground/70">
+            © {new Date().getFullYear()} {site.name} — Built with Next.js,
+            Tailwind, GSAP
+          </p>
+          {isPlaceholder(site.links.resume) ? (
+            <span className="font-mono text-[10px] text-muted-foreground/75">
+              see a version tailored to your role →
+            </span>
+          ) : (
+            <a
+              href={site.links.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] text-muted-foreground/70 transition-colors hover:text-primary"
+            >
+              see a version tailored to your role →
+            </a>
+          )}
+        </div>
       </div>
     </footer>
   );

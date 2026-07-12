@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Instrument_Serif, Space_Grotesk, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import "./globals.css";
 
-// Display headings — free variable editorial serif with character
-const fraunces = Fraunces({
+// Display headings — editorial serif (400 only; that's its whole character)
+const instrumentSerif = Instrument_Serif({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
   display: "swap",
-  axes: ["opsz"],
 });
 
-// Body — clean, readable
-const inter = Inter({
-  variable: "--font-inter",
+// Body / UI — Space Grotesk
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -25,10 +26,24 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const description =
+  "I build full-stack products and AI agents that actually ship. Full-Stack & AI Engineer based in Dallas, TX.";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://hpatelportfolio.vercel.app"),
   title: "Harsh Patel — Full-Stack & AI Engineer",
-  description:
-    "I build full-stack products and AI agents that actually ship. Full-Stack & AI Engineer based in Dallas, TX.",
+  description,
+  openGraph: {
+    title: "Harsh Patel — Full-Stack & AI Engineer",
+    description,
+    type: "website",
+    siteName: "Harsh Patel",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Harsh Patel — Full-Stack & AI Engineer",
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +55,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${inter.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${instrumentSerif.variable} ${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider

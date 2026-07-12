@@ -33,189 +33,24 @@ export const nav = [
 
 export const about = {
   paragraph:
-    "I'm Harsh Patel, a Computer Science student at UT Dallas (GPA 3.63, graduating December 2026) and a full-stack engineer working at the intersection of web development and AI. I build React and Next.js front ends, Python and Node back ends, and increasingly, multi-agent LLM systems with Claude and OpenAI. I've shipped software for platforms serving 500+ and 20,000+ users, led a 30-person engineering team, and won first place at TAMUHack's Toyota Challenge. I treat AI agents as real engineering leverage — with a heavy emphasis on prompt engineering and validating what the model actually produces.",
+    "I'm Harsh Patel, a Computer Science student at UT Dallas and a full-stack engineer working at the intersection of web development and AI. I build React and Next.js front ends, Python and Node back ends, and increasingly, multi-agent LLM systems with Claude and OpenAI. I've shipped software for platforms serving 500+ and 20,000+ users, led a 30-person engineering team, and won first place at TAMUHack's Toyota Challenge. I treat AI agents as real engineering leverage — with a heavy emphasis on prompt engineering and validating what the model actually produces.",
 };
 
-export const skills: { group: string; items: string[] }[] = [
-  {
-    group: "Languages",
-    items: ["JavaScript", "TypeScript", "Python", "Java", "SQL", "C++"],
-  },
-  {
-    group: "Frontend",
-    items: [
-      "React",
-      "Next.js",
-      "Vue.js",
-      "Tailwind CSS",
-      "Component Architecture",
-      "Figma-to-Code",
-      "Recharts",
-      "a11y",
-    ],
-  },
-  {
-    group: "Backend & APIs",
-    items: [
-      "Node.js",
-      "Express",
-      "Flask",
-      "FastAPI",
-      "REST",
-      "WebSockets/SSE",
-      "Event-Driven Workflows",
-    ],
-  },
-  {
-    group: "Databases",
-    items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase", "Firebase", "pgvector"],
-  },
-  {
-    group: "AI / LLM",
-    items: [
-      "Claude API",
-      "OpenAI API",
-      "Multi-Agent Systems",
-      "Agentic Workflows",
-      "Prompt Engineering",
-      "RAG",
-      "LLM Evaluation",
-      "Tool Calling",
-      "Hallucination Detection",
-    ],
-  },
-  {
-    group: "Cloud & DevOps",
-    items: [
-      "AWS (S3, Lambda)",
-      "GCP",
-      "Railway",
-      "Docker",
-      "Git",
-      "CI/CD (GitHub Actions)",
-      "Linux/CLI",
-    ],
-  },
-];
-
-export type ProjectLink = { label: string; href: string };
-export type Project = {
-  index: string;
-  name: string;
-  award?: string;
-  tagline?: string;
-  role?: string;
-  problem?: string;
-  build: string;
-  result?: string;
-  stack: string[];
-  note?: string;
-  links: ProjectLink[];
-};
-
-export const projects: Project[] = [
-  {
-    index: "01",
-    name: "RideIQ",
-    award: "🥇 1st Place, Toyota Challenge @ TAMUHack (Jan 2026)",
-    tagline: "AI car marketplace with semantic search across 43k vehicles.",
-    role: "Front-end lead · 24-hour hackathon",
-    problem:
-      "Car shoppers face tens of thousands of listings with no way to describe what they actually want in plain language.",
-    build:
-      "Led front-end for an AI car marketplace — a responsive, production-grade dashboard in Next.js, React, Tailwind. Built semantic search with pgvector embeddings interpreting natural-language queries across 43k vehicles / 62k listings; a 4-car comparison system with React Context + Recharts; and a test-drive booking flow.",
-    result: "1st place — full working product built and demoed in 24 hours.",
-    stack: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind",
-      "Supabase/PostgreSQL",
-      "pgvector",
-      "Recharts",
-    ],
-    links: [
-      { label: "Demo", href: "DEMO_URL" },
-      { label: "GitHub", href: "GITHUB_URL" },
-      { label: "Devpost", href: "DEVPOST_URL" },
-    ],
-  },
-  {
-    index: "02",
-    name: "DOME",
-    award: "Senior Capstone · Glenart Group",
-    tagline:
-      "13-agent Claude pipeline that extracts structured data from electrical diagrams.",
-    role: "Reporting Lead · owned Agent 5 (Redundancy) and Agent 10 (Output Formatting)",
-    problem:
-      "Extracting equipment data from single-line electrical diagrams was a slow, manual, expensive task ($200K–$500K and 6–12 months per facility).",
-    build:
-      "Co-developed a 13-agent Claude pipeline that ingests a one-line diagram and outputs structured JSON (equipment ID, type, specs, upstream/downstream connections, breaker ratings). As Reporting Lead I owned the redundancy-detection (Agent 5) and output-formatting (Agent 10) agents, and fixed recurring pipeline bugs.",
-    result:
-      "95% equipment-level and 81.72% field-level accuracy across 20 real-world diagrams; cut a 2–4 hour task to under 5 minutes (90–95% time reduction).",
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "Claude API (Opus)",
-      "Multi-Agent Pipeline",
-      "JSON",
-    ],
-    note: "Source code confidential at sponsor's request.",
-    links: [{ label: "Details TBD", href: "LINKS_TBD" }],
-  },
-  {
-    index: "03",
-    name: "FinanceIQ",
-    award: "🏅 4th Place, Goldman Sachs Challenge (Apr 2026)",
-    tagline:
-      "Full-stack AI investing platform aggregating 7 live financial APIs.",
-    role: "Full-stack builder · 36-hour build",
-    build:
-      "Full-stack AI investing platform aggregating live data from 7 financial APIs (yfinance, Polygon, FRED, NewsAPI, Claude) for personalized, AI-generated insights. Multi-agent Python/FastAPI backend on Railway with scheduled connectors and rate-limit handling; a Claude Sonnet advisor using SSE streaming + 6 tool calls; a responsive React/Next.js dashboard with real-time Recharts visualizations.",
-    stack: [
-      "Next.js",
-      "React",
-      "FastAPI",
-      "Python",
-      "Supabase",
-      "Railway",
-      "Claude API",
-      "Recharts",
-    ],
-    links: [
-      { label: "Demo", href: "DEMO_URL" },
-      { label: "GitHub", href: "GITHUB_URL" },
-      { label: "Devpost", href: "DEVPOST_URL" },
-    ],
-  },
-  {
-    index: "04",
-    name: "Your.ai",
-    award: "🥈 2nd Place, ACM Projects",
-    tagline:
-      "LLM scheduling assistant that manages calendars through natural language.",
-    role: "Full-stack builder",
-    build:
-      "LLM-powered scheduling assistant that manages calendars, tasks, and deadlines through natural-language commands and calendar sync. Implemented a RAG pipeline over user schedule/task data for context-aware recommendations; React/TypeScript UI with Google OAuth over a Flask/Express backend.",
-    stack: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "Tailwind",
-      "OpenAI Assistants API",
-      "RAG",
-      "Flask/Express",
-      "Google OAuth",
-    ],
-    links: [{ label: "Details TBD", href: "LINKS_TBD" }],
-  },
-];
+// NOTE: project and skills data live where they render —
+// src/components/sections/projects.tsx and about.tsx. The copies that used to
+// sit here went stale (placeholder links, 4 of 5 projects) and nothing
+// imported them, so they were removed. Add new projects in projects.tsx.
 
 export type Experience = {
   role: string;
   org: string;
   period: string;
+  badge: string;
+  stat: string;
+  statLabel: string;
   detail: string;
+  stack: string;
+  link?: string;
 };
 
 export const experience: Experience[] = [
@@ -223,29 +58,46 @@ export const experience: Experience[] = [
     role: "Technology Officer",
     org: "Artificial Intelligence Society",
     period: "Jun 2025 – Present",
+    badge: "Current",
+    stat: "30%",
+    statLabel: "front-end efficiency boost",
     detail:
-      "Build & maintain the org's web platform (React, Next.js, TypeScript, Tailwind); integrated reusable components boosting front-end efficiency ~30%; produced docs so non-technical members could use the platform.",
+      "Built and maintained the org's web platform serving active members across UT Dallas. Engineered a reusable React component library that cut feature development time by 30%. Defined front-end standards for consistency across concurrent projects and enabled non-technical officers to manage content independently through documentation and internal tooling.",
+    stack: "React · Next.js · TypeScript · Tailwind",
   },
   {
     role: "Project Lead",
-    org: "Nebula Labs (UTD Trends)",
+    org: "Nebula Labs — UTD Trends",
     period: "Jan 2025 – May 2025",
+    badge: "Leadership",
+    stat: "20,000",
+    statLabel: "users on the redesigned platform",
     detail:
-      "Led 30+ engineers and designers in a full UI redesign of a data-driven course-aggregation site serving 20,000 users; onboarded new members enabling deployment within 5 weeks.",
+      "Owned end-to-end delivery of a complete platform redesign for UTDTrends, a course-aggregation tool used by 20,000 UT Dallas students. Coordinated 30+ engineers and designers across parallel workstreams — setting sprint cycles, reviewing PRs, and unblocking the team. Brought the platform from design to production in 5 weeks and established CI/CD pipelines with GitHub Actions to automate deployment and reduce manual release overhead.",
+    stack: "React · GitHub Actions · CI/CD",
   },
   {
-    role: "SWE Intern",
+    role: "Software Engineer Intern",
     org: "Syft (Startup)",
     period: "Sept 2024 – July 2025",
+    badge: "Internship",
+    stat: "500+",
+    statLabel: "active users supported",
     detail:
-      "Built/maintained a Python + Flask app supporting 500+ active users; automated a cloud pipeline (AWS S3 + Firestore, Boto3) for 1,000+ images.",
+      "Joined an early-stage fashion-tech startup building AI-powered trend categorization tools. Developed and shipped features for an internal Flask web app used by 500+ active users to classify product images into defined fashion trend categories. Automated the bulk image ingestion pipeline — replacing a manual upload process with an AWS S3 + Firestore integration via Boto3, processing 1,000+ images per run.",
+    stack: "Python · Flask · AWS S3 · Firestore · Boto3",
+    link: "https://github.com/harshptl05/Syft-Internal-Trend-APP",
   },
   {
-    role: "SWE Intern",
+    role: "Software Engineer Intern",
     org: "Maiya LLC",
     period: "Sept 2023 – March 2024",
+    badge: "Internship",
+    stat: "30%",
+    statLabel: "reduction in check-in wait times",
     detail:
-      "Built a full-stack management system for 500+ monthly customers (React, Node, Express, PostgreSQL); cut check-in/out wait times ~30%.",
+      "Built a full-stack property management system for a motel business serving 500+ monthly guests — replacing manual processes with a unified dashboard for bookings, reservations, and financial tracking. Designed the check-in/check-out flow in React with a Node.js/PostgreSQL backend, cutting average wait times by 30%. Built scalable REST endpoints that automated data sync across front desk, billing, and reporting systems.",
+    stack: "React · Node.js · Express · PostgreSQL",
   },
 ];
 

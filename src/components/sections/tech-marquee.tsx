@@ -9,6 +9,7 @@ import {
   siPostgresql,
   siSupabase,
   siClaude,
+  siMongodb,
   siRailway,
   siDocker,
   siGithubactions,
@@ -57,6 +58,7 @@ const row2 = [
   { name: "AWS S3" },
   { name: "Railway", icon: <BrandIcon d={siRailway.path} color="currentColor" /> },
   { name: "Docker", icon: <BrandIcon d={siDocker.path} color="#2496ED" /> },
+  { name: "MongoDB", icon: <BrandIcon d={siMongodb.path} color="#47A248" /> },
   { name: "GitHub Actions", icon: <BrandIcon d={siGithubactions.path} color="#2088FF" /> },
   { name: "Tailwind CSS", icon: <BrandIcon d={siTailwindcss.path} color="#06B6D4" /> },
 ];

@@ -46,14 +46,16 @@ export function StackPanel({
         scrollTrigger: { trigger: card, start: "top 90%", once: true },
       });
 
-      // Recede as the next card rises over it (desktop only)
+      // Recede as the next card rises over it (desktop only). The dimming is
+      // a composited opacity fade on an overlay — NOT a CSS filter, which
+      // would force full repaints of the section on every scroll frame.
       if (!isMobile) {
+        const dim = card.querySelector(".stack-dim");
         gsap.fromTo(
           card,
-          { scale: 1, filter: "brightness(1)" },
+          { scale: 1 },
           {
             scale: 0.93,
-            filter: "brightness(0.5)",
             ease: "none",
             scrollTrigger: {
               trigger: card,
@@ -63,6 +65,22 @@ export function StackPanel({
             },
           },
         );
+        if (dim) {
+          gsap.fromTo(
+            dim,
+            { opacity: 0 },
+            {
+              opacity: 0.5,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "bottom 80%",
+                end: "bottom 25%",
+                scrub: true,
+              },
+            },
+          );
+        }
       }
     },
     { scope: ref },
@@ -78,6 +96,11 @@ export function StackPanel({
       )}
     >
       {children}
+      {/* Dim overlay animated by the recede scrub (cheaper than filter) */}
+      <span
+        aria-hidden
+        className="stack-dim pointer-events-none absolute inset-0 z-50 rounded-t-[2.5rem] bg-black opacity-0"
+      />
     </div>
   );
 }
